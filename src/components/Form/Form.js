@@ -36,7 +36,7 @@ class Form extends Component {
   }
 }
 
-//input exitsting informaiton from redux
+//input exitsting informaiton from redux 
 function mapStateToProps(reduxState){
   return reduxState
 }

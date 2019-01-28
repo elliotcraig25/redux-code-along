@@ -1,5 +1,6 @@
 import React from "react";
 import {connect}  from 'react-redux';
+import {removeItem} from './../../ducks/reducer';
 
 import trash from "./../../assets/waste_bin_red.svg";
 import "./List.css";
@@ -10,7 +11,7 @@ function List(props) {
   let list = props.list.map((item, i) => {
     return (
       <div className="list_item" key={item}>
-        <img src={trash} alt="delete" onClick={_ => props.remove(i)} />
+        <img src={trash} alt="delete" onClick={()=>props.removeItem(i)} />
         <p>{item}</p>
       </div>
     );
@@ -31,6 +32,13 @@ function mapStateProps(reduxState){
   }
 }
 
-const connectedComponent = connect(mapStateProps)(List)
+const mapDispatchToProps = {
+  removeItem
+  //removeItem: removeItem
+}
+
+const connectedComponent = connect(mapStateProps, mapDispatchToProps)(List)
 
 export default connectedComponent;
+
+//export default connect(mapStateProps, mapDispatchToProps)(List)
